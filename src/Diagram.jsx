@@ -28,7 +28,7 @@ function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
   const [bpmn, setBpmn] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const inpRef = useRef(null);
 
