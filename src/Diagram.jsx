@@ -28,7 +28,7 @@ function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
   const [bpmn, setBpmn] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const inpRef = useRef(null);
 
@@ -104,36 +104,48 @@ function Diagram() {
     <div>
       <div className="modeler-parent">
         <div id="modeler-container" ref={container}></div>
-        <button
-          onClick={handleExport}
-          style={{ position: "absolute", bottom: 10, left: 10 }}
-        >
-          Export BPMN
-        </button>
-        <input
-          type="file"
-          ref={inpRef}
-          onChange={handleImport}
+        <span
           style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            padding: 4,
+            gap: 10,
             position: "absolute",
-            bottom: 20,
-            left: 180,
-            display: "none",
+            bottom: 10,
+            left: 10,
           }}
-        />
-        <button
-          onClick={() => inpRef.current.click()}
-          style={{ position: "absolute", bottom: 10, left: 180 }}
         >
-          Import BPMN
-        </button>
-        <button
-          disabled={!bpmn}
-          onClick={handleDiagramView}
-          style={{ position: "absolute", bottom: 10, left: 350 }}
-        >
-          Visualise
-        </button>
+          <button
+            onClick={handleExport}
+            // style={{ position: "absolute", bottom: 10, left: 10 }}
+          >
+            Export BPMN
+          </button>
+          <input
+            type="file"
+            ref={inpRef}
+            onChange={handleImport}
+            style={{
+              position: "absolute",
+              bottom: 20,
+              left: 180,
+              display: "none",
+            }}
+          />
+          <button
+            onClick={() => inpRef.current.click()}
+            // style={{ position: "absolute", bottom: 10, left: 180 }}
+          >
+            Import BPMN
+          </button>
+          <button
+            disabled={!bpmn}
+            onClick={handleDiagramView}
+            // style={{ position: "absolute", bottom: 10, left: 350 }}
+          >
+            Visualise
+          </button>
+        </span>
       </div>
       <DrawerComponent isOpen={isOpen} onClose={handleDiagramView} />
     </div>
