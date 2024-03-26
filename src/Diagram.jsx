@@ -24,6 +24,9 @@ import "./index.css";
 
 import gridModule from "diagram-js-grid";
 import { TbZoomReset, TbZoomIn, TbZoomOut } from "react-icons/tb";
+import { HiMiniFolderOpen } from "react-icons/hi2";
+import { FaFileExport } from "react-icons/fa6";
+import { PiGraph } from "react-icons/pi";
 
 import DrawerComponent from "./components/DrawerComponent.jsx";
 
@@ -126,7 +129,11 @@ function Diagram() {
   return (
     <div>
       <div className="modeler-parent">
-        <div id="modeler-container" ref={container}></div>
+        <div
+          id="modeler-container"
+          ref={container}
+          style={{ border: "1px solid red", margin: "-10" }}
+        ></div>
         <span
           style={{
             display: "flex",
@@ -141,8 +148,9 @@ function Diagram() {
           <button
             onClick={handleExport}
             // style={{ position: "absolute", bottom: 10, left: 10 }}
+            title="export BPMN diagram to Neo4j database"
           >
-            Export BPMN
+            <FaFileExport size={20} />
           </button>
           <input
             type="file"
@@ -158,15 +166,17 @@ function Diagram() {
           <button
             onClick={() => inpRef.current.click()}
             // style={{ position: "absolute", bottom: 10, left: 180 }}
+            title="open BPMN diagram from local file system"
           >
-            Import BPMN
+            <HiMiniFolderOpen size={20} />
           </button>
           <button
             disabled={!bpmn}
             onClick={handleDiagramView}
             // style={{ position: "absolute", bottom: 10, left: 350 }}
+            title="visualise the neo4j diagram"
           >
-            Visualise
+            <PiGraph size={20} />
           </button>
         </span>
         <span
@@ -182,13 +192,13 @@ function Diagram() {
             gap: "1px",
           }}
         >
-          <button onClick={zoomReset}>
+          <button onClick={zoomReset} title="reset zoom">
             <TbZoomReset size={20} />
           </button>
-          <button onClick={zoomIn}>
+          <button onClick={zoomIn} title="zoom in">
             <TbZoomIn size={20} />
           </button>
-          <button onClick={zoomOut}>
+          <button onClick={zoomOut} title="zoom out">
             <TbZoomOut size={20} />
           </button>
         </span>

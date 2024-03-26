@@ -17,10 +17,16 @@ html {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  padding: 0;
+  /* margin: -10; */
+  /* border: 2px solid red; */
 }
 
 #modeler-container {
   flex: 1;
+  /* padding: 10; */
+  /* border: 2px solid blue; */
+  /* margin: 0; */
 }
 
 button {
@@ -39,7 +45,7 @@ button {
   /* Rounded corners */
 
   display: inline-block;
-  padding: 10px 20px;
+  padding: .3em 0.5em;
   background-color: #0A0A0B;
   color: white;
   border: none;
