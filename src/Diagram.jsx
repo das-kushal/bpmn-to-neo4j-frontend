@@ -204,7 +204,7 @@ function Diagram() {
             bottom: "3em",
             right: "2px",
             padding: "1em",
-            gap: "1px",
+            gap: "5px",
           }}
         >
           <button onClick={zoomReset} title="reset zoom">
