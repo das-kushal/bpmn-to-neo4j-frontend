@@ -23,11 +23,14 @@ import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 import "./index.css";
 
 import gridModule from "diagram-js-grid";
+
 import { TbZoomReset, TbZoomIn, TbZoomOut } from "react-icons/tb";
 import { HiMiniFolderOpen } from "react-icons/hi2";
 import { FaFileExport } from "react-icons/fa6";
 import { PiGraph } from "react-icons/pi";
 import { IoMdAddCircle } from "react-icons/io";
+import { FaRegImage } from "react-icons/fa6";
+import { ImDownload2 } from "react-icons/im";
 
 import DrawerComponent from "./components/DrawerComponent.jsx";
 
@@ -36,6 +39,8 @@ function Diagram() {
   const [modeler, setModeler] = useState(null);
   const [bpmn, setBpmn] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [neo4jData, setNeo4jData] = useState(null);
 
   const [zoomLevel, setZoomLevel] = useState(1);
 
@@ -92,7 +97,7 @@ function Diagram() {
   };
 
   const handleExport = () => {
-    modeler.saveXML({ format: true }).then(({ xml, error }) => {
+    modeler.saveXML({ format: true }).then(async ({ xml, error }) => {
       if (error) {
         console.error(error);
         return;
@@ -102,12 +107,16 @@ function Diagram() {
 
       setBpmn(xml);
 
-      xmlToNeo4j(
+      // TODO: readme write about the env variables files how to use it
+      const data = await xmlToNeo4j(
         xml,
         import.meta.env.VITE_NEO4J_URL,
         import.meta.env.VITE_NEO4J_USERNAME,
         import.meta.env.VITE_NEO4J_PASSWORD
       );
+      setNeo4jData(data);
+
+      console.log("NEO4J DATA:", data);
     });
   };
 
@@ -118,6 +127,40 @@ function Diagram() {
       }
 
       modeler.get("canvas").zoom("fit-viewport");
+    });
+  };
+
+  const handleSaveSvg = () => {
+    modeler.saveSVG({ format: true }).then(({ svg, error }) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const blob = new Blob([svg], { type: "image/svg+xml" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "bpmn_diagram.svg";
+      a.click();
+    });
+  };
+
+  const handleSaveBPMN = () => {
+    modeler.saveXML({ format: true }).then(({ xml, error }) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const blob = new Blob([xml], { type: "text/xml" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "bpmn_diagram.bpmn";
+      a.click();
     });
   };
 
@@ -178,6 +221,14 @@ function Diagram() {
           <button title="create new BPMN diagram" onClick={handleNewDiagram}>
             <IoMdAddCircle size={20} />
           </button>
+
+          <button title="download as BPMN 2.0 file" onClick={handleSaveBPMN}>
+            <ImDownload2 size={20} />
+          </button>
+          <button title="download as SVG image" onClick={handleSaveSvg}>
+            <FaRegImage size={20} />
+          </button>
+
           <button
             onClick={handleExport}
             // style={{ position: "absolute", bottom: 10, left: 10 }}
@@ -218,6 +269,12 @@ function Diagram() {
           </button>
         </span>
       </div>
+
+      <p style={{ position: "absolute", bottom: "0px", right: "5.2em" }}>
+        <button style={{ border: "none", backgroundColor: "transparent" }}>
+          about
+        </button>
+      </p>
 
       <DrawerComponent isOpen={isOpen} onClose={handleDiagramView} />
     </div>
