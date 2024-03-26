@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Drawer from "react-modern-drawer";
 
 import "react-modern-drawer/dist/index.css";
@@ -7,16 +8,17 @@ export default function DrawerComponent({ isOpen, onClose }) {
     <Drawer
       open={isOpen}
       onClose={onClose}
-      direction="right"
-      size={"50vw"}
+      direction="top"
+      size={"50vh"}
       //   className="bla bla bla"
     >
-      <div>
+      {/* <div>
         <div>Query</div>
         <div>
           <input type="text" placeholder="Place your query here" />
         </div>
-      </div>
+      </div> */}
+      <h1>neo4j diagram to be shown here</h1>
     </Drawer>
   );
 }

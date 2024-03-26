@@ -27,6 +27,7 @@ import { TbZoomReset, TbZoomIn, TbZoomOut } from "react-icons/tb";
 import { HiMiniFolderOpen } from "react-icons/hi2";
 import { FaFileExport } from "react-icons/fa6";
 import { PiGraph } from "react-icons/pi";
+import { IoMdAddCircle } from "react-icons/io";
 
 import DrawerComponent from "./components/DrawerComponent.jsx";
 
@@ -45,6 +46,7 @@ function Diagram() {
   useEffect(() => {
     if (modelerInstance) return;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     modelerInstance = new Modeler({
       container: container.current,
       additionalModules: [gridModule],
@@ -109,6 +111,16 @@ function Diagram() {
     });
   };
 
+  const handleNewDiagram = () => {
+    modeler.importXML(starterBpmn).then(({ warnings }) => {
+      if (warnings.length) {
+        console.warn(warnings);
+      }
+
+      modeler.get("canvas").zoom("fit-viewport");
+    });
+  };
+
   const zoomIn = () => {
     const newZoomLevel = zoomLevel + 0.1; // Increase the zoom level by 10%
     setZoomLevel(newZoomLevel); // Update the zoom level state
@@ -132,7 +144,7 @@ function Diagram() {
         <div
           id="modeler-container"
           ref={container}
-          style={{ margin: "-10" }}
+          style={{ margin: "-10px" }}
         ></div>
         <span
           style={{
@@ -145,13 +157,6 @@ function Diagram() {
             left: 10,
           }}
         >
-          <button
-            onClick={handleExport}
-            // style={{ position: "absolute", bottom: 10, left: 10 }}
-            title="export BPMN diagram to Neo4j database"
-          >
-            <FaFileExport size={20} />
-          </button>
           <input
             type="file"
             ref={inpRef}
@@ -169,6 +174,16 @@ function Diagram() {
             title="open BPMN diagram from local file system"
           >
             <HiMiniFolderOpen size={20} />
+          </button>
+          <button title="create new BPMN diagram" onClick={handleNewDiagram}>
+            <IoMdAddCircle size={20} />
+          </button>
+          <button
+            onClick={handleExport}
+            // style={{ position: "absolute", bottom: 10, left: 10 }}
+            title="export BPMN diagram to Neo4j database"
+          >
+            <FaFileExport size={20} />
           </button>
           <button
             disabled={!bpmn}
