@@ -760,6 +760,15 @@ bpmn-moddle@^8.1.0:
     moddle "^6.2.3"
     moddle-xml "^10.1.0"
 
+"bpmn-to-neo4j-m@file:../../bpmn_project/bpmn-to-neo4j":
+  version "1.0.9"
+  resolved "file:../../bpmn_project/bpmn-to-neo4j"
+  dependencies:
+    bpmn "^0.2.2"
+    bpmn-moddle "^8.0.1"
+    neo4j-driver "^5.12.0"
+    xml2js "^0.6.2"
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
@@ -2198,6 +2207,11 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-loading-skeleton@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/react-loading-skeleton/-/react-loading-skeleton-3.4.0.tgz"
+  integrity sha512-1oJEBc9+wn7BbkQQk7YodlYEIjgeR+GrRjD+QXkVjwZN7LGIcAFHrx4NhT7UHGBxNY1+zax3c+Fo6XQM4R7CgA==
+
 react-modern-drawer@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/react-modern-drawer/-/react-modern-drawer-1.2.2.tgz"
@@ -2208,7 +2222,7 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react@*, react@^18.2.0, "react@>= 16.8.0", react@>16.0.0:
+react@*, react@^18.2.0, "react@>= 16.8.0", react@>=16.8.0, react@>16.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

@@ -132,7 +132,7 @@ function Diagram() {
         <div
           id="modeler-container"
           ref={container}
-          style={{ border: "1px solid red", margin: "-10" }}
+          style={{ margin: "-10" }}
         ></div>
         <span
           style={{
