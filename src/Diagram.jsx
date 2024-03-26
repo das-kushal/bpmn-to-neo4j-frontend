@@ -22,6 +22,9 @@ import "bpmn-js/dist/assets/bpmn-js.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 import "./index.css";
 
+import gridModule from "diagram-js-grid";
+import { TbZoomReset, TbZoomIn, TbZoomOut } from "react-icons/tb";
+
 import DrawerComponent from "./components/DrawerComponent.jsx";
 
 function Diagram() {
@@ -29,6 +32,8 @@ function Diagram() {
   const [modeler, setModeler] = useState(null);
   const [bpmn, setBpmn] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [zoomLevel, setZoomLevel] = useState(1);
 
   const inpRef = useRef(null);
 
@@ -39,6 +44,7 @@ function Diagram() {
 
     modelerInstance = new Modeler({
       container: container.current,
+      additionalModules: [gridModule],
     });
     modelerInstance.importXML(starterBpmn).then(({ warnings }) => {
       if (warnings.length) {
@@ -100,6 +106,23 @@ function Diagram() {
     });
   };
 
+  const zoomIn = () => {
+    const newZoomLevel = zoomLevel + 0.1; // Increase the zoom level by 10%
+    setZoomLevel(newZoomLevel); // Update the zoom level state
+    modeler.get("canvas").zoom(newZoomLevel); // Zoom the canvas to the new zoom level
+  };
+
+  const zoomOut = () => {
+    const newZoomLevel = zoomLevel - 0.1; // Decrease the zoom level by 10%
+    setZoomLevel(newZoomLevel); // Update the zoom level state
+    modeler.get("canvas").zoom(newZoomLevel); // Zoom the canvas to the new zoom level
+  };
+
+  const zoomReset = () => {
+    setZoomLevel(1); // Reset the zoom level state to 1
+    modeler.get("canvas").zoom("fit-viewport"); // Zoom the canvas to fit the viewport
+  };
+
   return (
     <div>
       <div className="modeler-parent">
@@ -146,7 +169,31 @@ function Diagram() {
             Visualise
           </button>
         </span>
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            // width: "10vw",
+            justifyContent: "flex-end",
+            position: "absolute",
+            bottom: "3em",
+            right: "2px",
+            padding: "1em",
+            gap: "1px",
+          }}
+        >
+          <button onClick={zoomReset}>
+            <TbZoomReset size={20} />
+          </button>
+          <button onClick={zoomIn}>
+            <TbZoomIn size={20} />
+          </button>
+          <button onClick={zoomOut}>
+            <TbZoomOut size={20} />
+          </button>
+        </span>
       </div>
+
       <DrawerComponent isOpen={isOpen} onClose={handleDiagramView} />
     </div>
   );

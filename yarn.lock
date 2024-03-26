@@ -760,15 +760,6 @@ bpmn-moddle@^8.1.0:
     moddle "^6.2.3"
     moddle-xml "^10.1.0"
 
-"bpmn-to-neo4j-m@file:../../bpmn_project/bpmn-to-neo4j":
-  version "1.0.9"
-  resolved "file:../../bpmn_project/bpmn-to-neo4j"
-  dependencies:
-    bpmn "^0.2.2"
-    bpmn-moddle "^8.0.1"
-    neo4j-driver "^5.12.0"
-    xml2js "^0.6.2"
-
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
@@ -1001,6 +992,14 @@ diagram-js-direct-editing@^2.1.2:
   dependencies:
     min-dash "^4.0.0"
     min-dom "^4.0.2"
+
+diagram-js-grid@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/diagram-js-grid/-/diagram-js-grid-1.0.0.tgz"
+  integrity sha512-h3fCeoRnjNXaa4DW2upsKZv4xZvrI29zdSQwYb//nngNpAl1BgxTTI3Wb++AFmDFi1RydVH+TzRmpWvVyl4u8Q==
+  dependencies:
+    min-dash "^4.1.1"
+    tiny-svg "^3.0.1"
 
 diagram-js@*, diagram-js@^14.3.1, "diagram-js@>= 11.9":
   version "14.3.1"
@@ -2189,6 +2188,11 @@ react-dom@^18.2.0, "react-dom@>= 16.8.0":
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-icons@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.0.1.tgz"
+  integrity sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -2204,7 +2208,7 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react@^18.2.0, "react@>= 16.8.0", react@>16.0.0:
+react@*, react@^18.2.0, "react@>= 16.8.0", react@>16.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

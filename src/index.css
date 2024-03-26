@@ -9,6 +9,7 @@ html {
   flex-direction: column;
 
   font-family: sans-serif;
+  background-color: white;
 }
 
 .modeler-parent {
@@ -86,7 +87,7 @@ input:focus {
   background: #fff;
 }
 
-#modeler-container {
+/* #modeler-container {
 
   --dot-bg: white;
   --dot-color: rgba(0, 0, 0, 0.453);
@@ -96,4 +97,4 @@ input:focus {
     linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
     linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
     var(--dot-color);
-}
+} */
