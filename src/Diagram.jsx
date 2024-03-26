@@ -33,12 +33,14 @@ import { FaRegImage } from "react-icons/fa6";
 import { ImDownload2 } from "react-icons/im";
 
 import DrawerComponent from "./components/DrawerComponent.jsx";
+import AboutModal from "./components/AboutModal.jsx";
 
 function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
   const [bpmn, setBpmn] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [aboutModalOpen, setAboutModalOpen] = useState(false);
 
   const [neo4jData, setNeo4jData] = useState(null);
 
@@ -181,6 +183,10 @@ function Diagram() {
     modeler.get("canvas").zoom("fit-viewport"); // Zoom the canvas to fit the viewport
   };
 
+  const closeAboutModal = () => {
+    setAboutModalOpen(false);
+  };
+
   return (
     <div>
       <div className="modeler-parent">
@@ -270,11 +276,23 @@ function Diagram() {
         </span>
       </div>
 
-      <p style={{ position: "absolute", bottom: "0px", right: "5.2em" }}>
-        <button style={{ border: "none", backgroundColor: "transparent" }}>
+      <p
+        style={{ position: "absolute", bottom: "0px", right: "5.2em" }}
+        id="aboutModal"
+      >
+        <button
+          style={{
+            border: "none",
+            backgroundColor: "transparent",
+            color: "black",
+            hover: "none",
+          }}
+          onClick={() => setAboutModalOpen(true)}
+        >
           about
         </button>
       </p>
+      <AboutModal isOpen={aboutModalOpen} onClose={closeAboutModal} />
 
       <DrawerComponent isOpen={isOpen} onClose={handleDiagramView} />
     </div>
