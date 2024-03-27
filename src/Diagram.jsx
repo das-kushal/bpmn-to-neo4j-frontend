@@ -265,7 +265,7 @@ function Diagram() {
             <FaFileExport size={20} />
           </button>
           <button
-            disabled={!bpmn}
+            disabled={!neo4jData}
             onClick={handleDiagramView}
             // style={{ position: "absolute", bottom: 10, left: 350 }}
             title="visualise the neo4j diagram"
