@@ -42,8 +42,8 @@ VITE_NEO4J_PASSWORD="<your-neo4j-password>"
 ```
 
 #### Here are some images
+![Screenshot 2024-03-27 at 11 38 40 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/551aa6eb-da5c-42bf-bddc-f4cb85bfc2be)
 
-![Screenshot 2024-03-27 at 10 22 08 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/9d5bb664-7dcb-45e3-b559-6cd156ea8a4d)
 
 ![Screenshot 2024-03-27 at 10 50 42 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/a6027164-4665-4760-81fa-2e543058174f)
 
