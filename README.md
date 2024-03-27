@@ -2,9 +2,9 @@
 
 This is a frontend which can be used to create a BPMN diagram and then export it to Neo4j database and visualise the graph in the browser itself
 
-### What are the features included:
+## What are the features included:
 
-#### What can the features given ?
+### What can the features given ?
 
 - Create BPMN diagram
 - Import BPMN diagram from local system
@@ -13,15 +13,15 @@ This is a frontend which can be used to create a BPMN diagram and then export it
 - Export the BPMN to Neo4j graph database
 - Visualise the graph in the browser itself and get to see the information about nodes and edges
 
-#### How to use it
+### How to use it
 
-> clone the repository
+#### Clone the repository
 
 ```
 git clone https://github.com/das-kushal/bpmn-to-neo4j-frontend
 ```
 
-> install dependencies
+#### Install dependencies
 
 ```
 yarn
@@ -33,7 +33,7 @@ or
 npm install
 ```
 
-> In the env file write your own credentials for neo4j
+#### In the env file write your own credentials for neo4j
 
 ```
 VITE_NEO4J_URL="<your-neo4j-url>"
@@ -41,9 +41,23 @@ VITE_NEO4J_USERNAME="<your-neo4j-username>"
 VITE_NEO4J_PASSWORD="<your-neo4j-password>"
 ```
 
-#### Here are some images
-![Screenshot 2024-03-27 at 11 38 40 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/551aa6eb-da5c-42bf-bddc-f4cb85bfc2be)
+#### Now run the project with this command
 
+```
+yarn dev
+```
+
+or
+
+```
+npm run dev
+```
+
+Note: Make sure that your Neo4j is up and running
+
+#### Here are some images
+
+![Screenshot 2024-03-27 at 11 38 40 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/551aa6eb-da5c-42bf-bddc-f4cb85bfc2be)
 
 ![Screenshot 2024-03-27 at 10 50 42 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/a6027164-4665-4760-81fa-2e543058174f)
 

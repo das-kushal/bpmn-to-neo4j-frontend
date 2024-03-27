@@ -10,7 +10,7 @@
 
 // import starterBpmn from "./assets/diagram.bpmn";
 
-import { xmlToNeo4j } from "bpmn-to-neo4j-m";
+import { xmlToNeo4j } from "bpmn2neo4j";
 
 import { useEffect, useRef, useState } from "react";
 import Modeler from "bpmn-js/lib/Modeler";
@@ -112,6 +112,12 @@ function Diagram() {
       setBpmn(xml);
 
       // TODO: readme write about the env variables files how to use it
+      // const data = await xmlToNeo4j(
+      //   xml,
+      //   import.meta.env.VITE_NEO4J_URL,
+      //   import.meta.env.VITE_NEO4J_USERNAME,
+      //   import.meta.env.VITE_NEO4J_PASSWORD
+      // );
       const data = await xmlToNeo4j(
         xml,
         import.meta.env.VITE_NEO4J_URL,
