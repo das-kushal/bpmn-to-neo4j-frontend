@@ -58,6 +58,9 @@ function Diagram() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     modelerInstance = new Modeler({
       container: container.current,
+      keyboard: {
+        bindTo: window,
+      },
       additionalModules: [gridModule],
     });
     modelerInstance.importXML(starterBpmn).then(({ warnings }) => {
