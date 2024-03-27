@@ -35,6 +35,8 @@ import { ImDownload2 } from "react-icons/im";
 import DrawerComponent from "./components/DrawerComponent.jsx";
 import AboutModal from "./components/AboutModal.jsx";
 
+import logo from "./assets/logo.png";
+
 function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
@@ -190,6 +192,17 @@ function Diagram() {
   return (
     <div>
       <div className="modeler-parent">
+        <img
+          src={logo}
+          alt="logo"
+          style={{
+            width: "50px",
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+          }}
+          loading="lazy"
+        />
         <div
           id="modeler-container"
           ref={container}
