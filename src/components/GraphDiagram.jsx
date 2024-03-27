@@ -341,7 +341,7 @@ export default function GraphDiagram({ data }) {
         style={{
           // border: "1px solid blue",
           backgroundColor: "#F9FCFF",
-          height: "80%",
+          height: "75%",
         }}
       />
       {!nodeInfo && !edgeInfo && (
