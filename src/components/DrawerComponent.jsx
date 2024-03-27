@@ -4,13 +4,13 @@ import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import GraphDiagram from "./GraphDiagram";
 
-export default function DrawerComponent({ isOpen, onClose }) {
+export default function DrawerComponent({ isOpen, onClose, neo4jData }) {
   return (
     <Drawer
       open={isOpen}
       onClose={onClose}
       direction="right"
-      size={"50vw"}
+      size={"70vw"}
       //   className="bla bla bla"
     >
       <div
@@ -25,13 +25,13 @@ export default function DrawerComponent({ isOpen, onClose }) {
           // border: "1px solid red",
         }}
       >
-        {/* <span>Query</span> */}
+        <span>Neo4j Graph</span>
         {/* <div> */}
-        <input
+        {/* <input
           type="text"
           style={{ width: "80%" }}
           placeholder="Place your query here"
-        />
+        /> */}
         {/* </div> */}
       </div>
       <div
@@ -40,11 +40,12 @@ export default function DrawerComponent({ isOpen, onClose }) {
           justifyContent: "center",
           alignItems: "center",
           marginTop: ".3em",
-          border: "1px solid red",
+          // border: "1px solid red",
           height: "100%",
+          flexDirection: "column",
         }}
       >
-        <GraphDiagram />
+        {neo4jData && <GraphDiagram data={neo4jData} />}
       </div>
       {/* <h1>neo4j diagram to be shown here</h1> */}
     </Drawer>

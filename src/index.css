@@ -121,3 +121,18 @@ input:focus {
   background-color: #e2e2e28b;
   /* opacity: 0.5; */
 }
+
+
+
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 20px;
+}

@@ -118,7 +118,7 @@ function Diagram() {
       );
       setNeo4jData(data);
 
-      console.log("NEO4J DATA:", data);
+      //   console.log("NEO4J DATA:", data);
     });
   };
 
@@ -294,7 +294,11 @@ function Diagram() {
       </p>
       <AboutModal isOpen={aboutModalOpen} onClose={closeAboutModal} />
 
-      <DrawerComponent isOpen={isOpen} onClose={handleDiagramView} />
+      <DrawerComponent
+        isOpen={isOpen}
+        onClose={handleDiagramView}
+        neo4jData={neo4jData}
+      />
     </div>
   );
 }
