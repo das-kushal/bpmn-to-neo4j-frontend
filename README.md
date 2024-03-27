@@ -18,7 +18,7 @@ This is a frontend which can be used to create a BPMN diagram and then export it
 > clone the repository
 
 ```
-git clone https://github.com/das-kushal/bpmn-neo4j-frontend-final
+git clone https://github.com/das-kushal/bpmn-to-neo4j-frontend
 ```
 
 > install dependencies
