@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import Graph from "react-graph-vis";
 

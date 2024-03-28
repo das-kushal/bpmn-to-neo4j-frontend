@@ -42,7 +42,7 @@ function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
   // const [bpmn, setBpmn] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [aboutModalOpen, setAboutModalOpen] = useState(false);
   const [pendingExport, setPendingExport] = useState(false);
 

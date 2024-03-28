@@ -466,6 +466,20 @@
     "@lezer/common" "^1.0.0"
     "@lezer/highlight" "^1.0.0"
 
+"@monaco-editor/loader@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@monaco-editor/loader/-/loader-1.4.0.tgz"
+  integrity sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg==
+  dependencies:
+    state-local "^1.0.6"
+
+"@monaco-editor/react@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.npmjs.org/@monaco-editor/react/-/react-4.6.0.tgz"
+  integrity sha512-RFkU9/i7cN2bsq/iTkurMWOEErmYcY6JiQI3Jn+WeR/FGISH8JbHERjpS9oRuSOPvDMJI0Z8nJeKkbOs9sBYQw==
+  dependencies:
+    "@monaco-editor/loader" "^1.4.0"
+
 "@mongodb-js/saslprep@^1.1.5":
   version "1.1.5"
   resolved "https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.1.5.tgz"
@@ -975,7 +989,7 @@ classnames@^2.3.1:
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
-clsx@^2.1.0:
+clsx@^2.0.0, clsx@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/clsx/-/clsx-2.1.0.tgz"
   integrity sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==
@@ -2501,6 +2515,11 @@ moment@^2.19.3:
   resolved "https://registry.npmjs.org/moment/-/moment-2.30.1.tgz"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
+"monaco-editor@>= 0.21.0 < 1", "monaco-editor@>= 0.25.0 < 1":
+  version "0.47.0"
+  resolved "https://registry.npmjs.org/monaco-editor/-/monaco-editor-0.47.0.tgz"
+  integrity sha512-VabVvHvQ9QmMwXu4du008ZDuyLnHs9j7ThVFsiJoXSOQk18+LF89N4ADzPbFenm0W4V2bGHnFBztIRQTgBfxzw==
+
 mongodb-connection-string-url@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/mongodb-connection-string-url/-/mongodb-connection-string-url-3.0.0.tgz"
@@ -2586,7 +2605,7 @@ neo4j-driver-core@5.18.0:
   resolved "https://registry.npmjs.org/neo4j-driver-core/-/neo4j-driver-core-5.18.0.tgz"
   integrity sha512-naq5zT5tYazh81CO28L5YrcL/Wy4NoppqawkE5zyfFFVEs3bhmGn7G170FL0Fs8h7Dab1aZ5hlOBwlXXVWSDng==
 
-neo4j-driver@^5.12.0:
+neo4j-driver@^5.12.0, neo4j-driver@^5.18.0:
   version "5.18.0"
   resolved "https://registry.npmjs.org/neo4j-driver/-/neo4j-driver-5.18.0.tgz"
   integrity sha512-lDDoj45SN/FNZIYa9cTesHTAVMrcPeWmgkrYiYGTVBfJ3yKk2m2G7+lpmfip6NN8H+A0C4NIqfmMHtcC4eflyw==
@@ -2852,7 +2871,7 @@ process@^0.11.10:
   resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-prop-types@^15.5.10, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2895,7 +2914,7 @@ react-device-detect@^2.2.3:
   dependencies:
     ua-parser-js "^1.0.33"
 
-"react-dom@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", react-dom@^18.2.0, "react-dom@>= 0.14.0":
+"react-dom@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^18.2.0, "react-dom@>= 0.14.0":
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -2954,7 +2973,15 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
-react@*, "react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", react@^18.2.0, "react@>= 0.14.0", react@>=16.8.0, react@>16.0.0:
+react-tabs@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/react-tabs/-/react-tabs-6.0.2.tgz"
+  integrity sha512-aQXTKolnM28k3KguGDBSAbJvcowOQr23A+CUJdzJtOSDOtTwzEaJA+1U4KwhNL9+Obe+jFS7geuvA7ICQPXOnQ==
+  dependencies:
+    clsx "^2.0.0"
+    prop-types "^15.5.0"
+
+react@*, "react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", react@>=16.8.0, react@>16.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -3385,6 +3412,11 @@ stack-trace@0.0.x:
   version "0.0.10"
   resolved "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.10.tgz"
   integrity sha512-KGzahc7puUKkzyMt+IqAep+TVNbKP+k2Lmwhub39m1AsTSkaDutx56aDCo+HLDzf/D26BIHTJWNiTG1KAJiQCg==
+
+state-local@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/state-local/-/state-local-1.0.7.tgz"
+  integrity sha512-HTEHMNieakEnoe33shBYcZ7NX83ACUjCu8c40iOGEZsngj9zRnkqS9j1pqQPXwobB0ZcVTk27REb7COQ0UR59w==
 
 statuses@2.0.1:
   version "2.0.1"
