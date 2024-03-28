@@ -25,6 +25,17 @@ export default function DrawerComponent({ isOpen, onClose, neo4jData }) {
           // border: "1px solid red",
         }}
       >
+        {/* <button
+          onClick={onClose}
+          style={{
+            // padding: "10px",
+            margin: "3px",
+            // boxShadow: "0px 0px 10px 3px #000000",
+          }}
+        >
+          {" "}
+          close{" "}
+        </button> */}
         <span>Neo4j Graph</span>
         {/* <div> */}
         {/* <input

@@ -31,6 +31,7 @@ import { PiGraph } from "react-icons/pi";
 import { IoMdAddCircle } from "react-icons/io";
 import { FaRegImage } from "react-icons/fa6";
 import { ImDownload2 } from "react-icons/im";
+import { CgSpinner } from "react-icons/cg";
 
 import DrawerComponent from "./components/DrawerComponent.jsx";
 import AboutModal from "./components/AboutModal.jsx";
@@ -40,9 +41,10 @@ import logo from "./assets/logo.png";
 function Diagram() {
   const container = useRef(null);
   const [modeler, setModeler] = useState(null);
-  const [bpmn, setBpmn] = useState(null);
+  // const [bpmn, setBpmn] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [aboutModalOpen, setAboutModalOpen] = useState(false);
+  const [pendingExport, setPendingExport] = useState(false);
 
   const [neo4jData, setNeo4jData] = useState(null);
 
@@ -112,7 +114,7 @@ function Diagram() {
 
       console.log("UPDATE XML:", xml);
 
-      setBpmn(xml);
+      // setBpmn(xml);
 
       // TODO: readme write about the env variables files how to use it
       // const data = await xmlToNeo4j(
@@ -121,6 +123,8 @@ function Diagram() {
       //   import.meta.env.VITE_NEO4J_USERNAME,
       //   import.meta.env.VITE_NEO4J_PASSWORD
       // );
+
+      setPendingExport(true);
       const data = await xmlToNeo4j(
         xml,
         import.meta.env.VITE_NEO4J_URL,
@@ -128,6 +132,7 @@ function Diagram() {
         import.meta.env.VITE_NEO4J_PASSWORD
       );
       setNeo4jData(data);
+      setPendingExport(false);
 
       //   console.log("NEO4J DATA:", data);
     });
@@ -262,7 +267,11 @@ function Diagram() {
             // style={{ position: "absolute", bottom: 10, left: 10 }}
             title="export BPMN diagram to Neo4j database"
           >
-            <FaFileExport size={20} />
+            {pendingExport ? (
+              <CgSpinner size={20} className="loader" />
+            ) : (
+              <FaFileExport size={20} />
+            )}
           </button>
           <button
             disabled={!neo4jData}

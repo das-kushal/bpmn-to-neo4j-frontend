@@ -20,6 +20,8 @@ export default function Loading() {
         <Skeleton height={40} width={40} />
         <Skeleton height={40} width={40} />
         <Skeleton height={40} width={40} />
+        <Skeleton height={40} width={40} />
+        <Skeleton height={40} width={40} />
       </span>
       <span
         style={{
