@@ -237,7 +237,7 @@ export default function GraphDiagram({ data }) {
   };
 
   return (
-    <div style={{ height: "100%", width: "100%" }}>
+    <div style={{ height: "96%", width: "96%" }}>
       <Graph
         graph={graph}
         options={options}
@@ -340,9 +340,10 @@ export default function GraphDiagram({ data }) {
           //   });
         }}
         style={{
-          // border: "1px solid blue",
+          border: "1px solid #dee1e2",
           backgroundColor: "#F9FCFF",
           height: "75%",
+          borderRadius: "6px",
         }}
       />
       {!nodeInfo && !edgeInfo && (

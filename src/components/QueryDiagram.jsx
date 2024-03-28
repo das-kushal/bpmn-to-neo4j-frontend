@@ -5,9 +5,11 @@ import { FaPlay } from "react-icons/fa";
 import { RxReset } from "react-icons/rx";
 
 import Editor from "@monaco-editor/react";
+import GraphDiagram from "./GraphDiagram";
+import { CgSpinner } from "react-icons/cg";
 
 export default function QueryDiagram({ neo4jData }) {
-  const [query, setQuery] = useState("MATCH (n) RETURN n;");
+  const [query, setQuery] = useState("");
   const [session, setSession] = useState(null);
   useEffect(() => {
     const connectDriver = () => {
@@ -34,17 +36,75 @@ export default function QueryDiagram({ neo4jData }) {
     }
   };
 
+  const monacoOptions = {
+    renderLineHighlight: "none",
+    quickSuggestions: false,
+    glyphMargin: false,
+    lineDecorationsWidth: 0,
+    folding: false,
+    fixedOverflowWidgets: true,
+    acceptSuggestionOnEnter: "on",
+    hover: {
+      delay: 100,
+    },
+    roundedSelection: false,
+    contextmenu: false,
+    cursorStyle: "line-thin",
+    occurrencesHighlight: false,
+    links: false,
+    minimap: { enabled: false },
+    wordBasedSuggestions: false,
+    // disable `Find`
+    find: {
+      addExtraSpaceOnTop: false,
+      autoFindInSelection: "never",
+      seedSearchStringFromSelection: "never",
+    },
+    fontSize: 14,
+    fontWeight: "normal",
+    wordWrap: "off",
+    lineNumbers: "off",
+    lineNumbersMinChars: 0,
+    overviewRulerLanes: 0,
+    overviewRulerBorder: false,
+    hideCursorInOverviewRuler: true,
+    scrollBeyondLastColumn: 0,
+    scrollbar: {
+      horizontal: "hidden",
+      vertical: "hidden",
+      // avoid can not scroll page when hover monaco
+      alwaysConsumeMouseWheel: false,
+    },
+  };
+
   return (
-    <>
+    <
+      //   style={{
+      //     display: "flex",
+      //     flexDirection: "column",
+      //     justifyContent: "space-around",
+      //     alignItems: "center",
+      //     height: "100%",
+      //     width: "90%",
+      //     padding: "1em",
+      //     margin: "auto",
+      //   }}
+    >
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
-          padding: 10,
-          gap: 10,
+          paddingTop: 10,
+          //   marginLeft: 10,
+          gap: 5,
+          width: "96%",
+          margin: "auto",
+          //   height: "10vh",
+          //   width: "100%",
         }}
       >
+        {/* <label htmlFor="query">Write your Query</label> */}
         {/* <textarea
           type="text"
           name="query"
@@ -57,25 +117,52 @@ export default function QueryDiagram({ neo4jData }) {
         /> */}
         <Editor
           className="query"
-          height="10vh"
+          height="11vh"
           defaultLanguage="cypher"
-          defaultValue="MATCH (n) RETURN n;"
+          //   placeholder="Write your query here"
+          defaultValue="Write your query here"
           value={query}
           onChange={(value) => setQuery(value)}
-          options={{
-            minimap: { enabled: false },
-            scrollbar: { vertical: "hidden", horizontal: "hidden" },
-            renderLineHighlight: false,
-            lineNumbers: "off",
-          }}
-        />
+          //   options={{
+          //     minimap: { enabled: false },
+          //     scrollbar: { vertical: "hidden", horizontal: "hidden" },
+          //     renderLineHighlight: false,
+          //     lineNumbers: "off",
+          //   }}
 
-        <button onClick={handleQueryRun}>
-          <FaPlay size={20} />
-        </button>
-        <button onClick={() => setQuery("")}>
-          <RxReset size={20} />
-        </button>
+          options={monacoOptions}
+        />
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <button onClick={handleQueryRun} disabled={!query}>
+            <FaPlay size={24} />
+          </button>
+          <button onClick={() => setQuery("")}>
+            <RxReset size={24} />
+          </button>
+        </span>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // margin: 0,
+          // marginTop: ".3em",
+          // border: "1px solid red",
+          height: "82.5vh",
+          flexDirection: "column",
+        }}
+      >
+        {neo4jData && <GraphDiagram data={neo4jData} />}
+        {!neo4jData && <CgSpinner size={40} className="loader" />}
       </div>
     </>
   );
