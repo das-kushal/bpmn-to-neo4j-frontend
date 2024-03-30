@@ -122,7 +122,7 @@ export default function GraphDiagram({ data }) {
       dragNodes: true,
       navigationButtons: true,
       //   zoomView: true,
-      keyboard: true,
+      // keyboard: true,
     },
 
     // physics: {
