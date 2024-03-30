@@ -8,6 +8,25 @@ export default function GraphDiagram({ data }) {
 
   //   const [typeColorMap, setTypeColorMap] = useState({});
 
+  if (!data) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // padding: "1em",
+          padding: ".4em",
+          flexDirection: "column",
+          width: "100%",
+          // border: "1px solid red",
+        }}
+      >
+        <p>No data to display</p>
+      </div>
+    );
+  }
+
   function convertNodes(nodesData) {
     const nodes = nodesData.map((node) => {
       const { id, name, type, annotation, marker, eventDefinitions, parent } =
