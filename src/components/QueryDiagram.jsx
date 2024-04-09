@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import neo4j from "neo4j-driver";
 import { FaPlay } from "react-icons/fa";
@@ -11,7 +12,32 @@ import { CgSpinner } from "react-icons/cg";
 export default function QueryDiagram({ neo4jData }) {
   const [query, setQuery] = useState("");
   const [session, setSession] = useState(null);
+  const [adjMatrix, setAdjMatrix] = useState({});
+  const [graphData, setGraphData] = useState(neo4jData);
+  /* {
+    "type": "RELATIONSHIP",
+    "source": {
+        "type": "StartEvent",
+        "id": "Event_0d5lr0o"
+    },
+    "target": {
+        "type": "Task",
+        "id": "Activity_1p8iqcn"
+    }
+} */
   useEffect(() => {
+    const createAdjMatrix = (neo4jData) => {
+      let matrix = {};
+      neo4jData.relationships.forEach((rel) => {
+        if (matrix[rel.source.id]) {
+          matrix[rel.source.id].push(rel);
+        } else {
+          matrix[rel.source.id] = [rel];
+        }
+      });
+      setAdjMatrix(matrix);
+    };
+    // setGraphData(neo4jData);
     const connectDriver = () => {
       const driver = neo4j.driver(
         import.meta.env.VITE_NEO4J_URL,
@@ -24,12 +50,52 @@ export default function QueryDiagram({ neo4jData }) {
       setSession(driver.session());
     };
 
+    createAdjMatrix(neo4jData);
+
     connectDriver();
   }, []);
 
   const handleQueryRun = async () => {
+    let nodesObj = {};
+    let relationships = [];
+    let nodes = [];
+    async function processQuery(query) {
+      query.forEach((record) => {
+        record._fields.forEach((field) => {
+          if (!field.start && !field.end) {
+            nodesObj[field.elementId] = {
+              id: field.properties.id,
+              name: field.properties.name || "",
+              type: field.labels[0],
+              annotation: field.properties.annotation || "",
+              marker: field.properties.marker || "",
+              eventDefinitions: field.properties.eventDef_type || "",
+              parent: field.properties.parent_id
+                ? {
+                    parentId: field.properties.parent_id,
+                    parentName: field.properties.parent_name,
+                  }
+                : null,
+            };
+          }
+        });
+      });
+      nodes = Object.values(nodesObj);
+      nodes.forEach((node) => {
+        if (adjMatrix[node.id]) {
+          relationships = [...relationships, ...adjMatrix[node.id]];
+        }
+      });
+      console.log("nodes", nodes, "relationships", relationships);
+      setGraphData({
+        nodes: nodes,
+        relationships: relationships,
+      });
+      // console.log(nodes, relationships);
+    }
     try {
       const result = await session.run(query);
+      await processQuery(result.records);
       console.log(result.records);
     } catch (err) {
       console.error(err);
@@ -120,7 +186,7 @@ export default function QueryDiagram({ neo4jData }) {
           height="11vh"
           defaultLanguage="cypher"
           //   placeholder="Write your query here"
-          defaultValue="Write your query here"
+          defaultValue="match (n) return n;"
           value={query}
           onChange={(value) => setQuery(value)}
           //   options={{
@@ -161,8 +227,8 @@ export default function QueryDiagram({ neo4jData }) {
           flexDirection: "column",
         }}
       >
-        {neo4jData && <GraphDiagram data={neo4jData} />}
-        {!neo4jData && <CgSpinner size={40} className="loader" />}
+        {graphData && <GraphDiagram data={graphData} />}
+        {!graphData && <CgSpinner size={40} className="loader" />}
       </div>
     </>
   );
