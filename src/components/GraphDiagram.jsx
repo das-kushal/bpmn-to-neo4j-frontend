@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Graph from "react-graph-vis";
+import { ColorReference } from "../utils/ColorReference";
 
 export default function GraphDiagram({ data }) {
   const [nodeInfo, setNodeInfo] = useState(null);
   const [edgeInfo, setEdgeInfo] = useState(null);
-
-  //   const [typeColorMap, setTypeColorMap] = useState({});
 
   if (!data) {
     return (
@@ -40,16 +39,10 @@ export default function GraphDiagram({ data }) {
         marker,
         eventDefinitions,
         parent,
+        color: ColorReference[type] || "#F69767",
       };
     });
-    // const colors = {};
-    // nodes.forEach((node) => {
-    //   if (!(node.type in colors)) {
-    //     colors[node.type] =
-    //       "#" + Math.floor(Math.random() * 16777215).toString(16);
-    //   }
-    // });
-    // setTypeColorMap(colors);
+
     return { nodes };
   }
 
@@ -77,14 +70,8 @@ export default function GraphDiagram({ data }) {
     return { ...nodes, ...edges };
   }
 
-  // console.log(data);
-  //   var graph = { nodes: [], edges: [] };
   const graph = transformData(data);
-
-  //   const nodeColorOptions = {};
-  //   for (const type in typeColorMap) {
-  //     nodeColorOptions[type] = typeColorMap[type];
-  //   }
+  console.log(graph);
 
   const options = {
     edges: {
@@ -116,6 +103,13 @@ export default function GraphDiagram({ data }) {
       shape: "circle",
       //   physics: false,
       color: "#F69767",
+      // color: graph?.nodes?.type
+      //   ? `rgb(0,0,0)`
+      //   : ColorReference[`${graph?.nodes?.type}`],
+      // color: (() =>
+      //   `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      //     Math.random() * 256
+      //   )}, ${Math.floor(Math.random() * 256)})`)(),
       // size: 20,
       fixed: false,
       font: {
@@ -209,6 +203,17 @@ export default function GraphDiagram({ data }) {
     blurNode: function () {
       setNodeInfo(null);
     },
+
+    // stabilizationIterationsDone: function () {
+    //   const updatedGraph = graph.nodes.map((node) => {
+    //     return {
+    //       ...node,
+    //       color: ColorReference[`${node.type}`],
+    //     };
+    //   });
+
+    //   graph = updatedGraph;
+    // },
   };
 
   const renderNodeBadges = (nodeInfo) => {
