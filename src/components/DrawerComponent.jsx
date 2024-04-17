@@ -51,8 +51,8 @@ export default function DrawerComponent({ isOpen, onClose, neo4jData }) {
               alignItems: "center",
               // margin: 0,
               // marginTop: ".3em",
-              // border: "1px solid red",
-              height: "100%",
+              // border: "1px solid blue",
+              height: "95dvh",
               flexDirection: "column",
             }}
           >

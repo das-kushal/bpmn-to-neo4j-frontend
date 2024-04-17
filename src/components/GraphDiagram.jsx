@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Graph from "react-graph-vis";
 import { ColorReference } from "../utils/ColorReference";
+import { ForceGraph2D } from "react-force-graph";
 
 export default function GraphDiagram({ data }) {
   const [nodeInfo, setNodeInfo] = useState(null);
@@ -261,7 +262,17 @@ export default function GraphDiagram({ data }) {
   };
 
   return (
-    <div style={{ height: "96%", width: "96%" }}>
+    <div
+      style={{
+        height: "100%",
+        width: "96%",
+        padding: "1em",
+        // margin: "auto",
+        // border: "1px solid red",
+        position: "relative",
+        flex: 1,
+      }}
+    >
       <Graph
         graph={graph}
         options={options}
@@ -270,98 +281,6 @@ export default function GraphDiagram({ data }) {
           network.on("stabilized", function () {
             network.fit();
           });
-          //   network.stabilize();
-          //   network.on("beforeDrawing", function (ctx) {
-          //     var width = ctx.canvas.clientWidth;
-          //     var height = ctx.canvas.clientHeight;
-          //     var spacing = 40;
-          //     var gridExtentFactor = 4;
-          //     ctx.strokeStyle = "lightgrey";
-          //     // draw grid
-          //     ctx.beginPath();
-          //     for (
-          //       var x = -width * gridExtentFactor;
-          //       x <= width * gridExtentFactor;
-          //       x += spacing
-          //     ) {
-          //       ctx.moveTo(x, height * gridExtentFactor);
-          //       ctx.lineTo(x, -height * gridExtentFactor);
-          //     }
-          //     for (
-          //       var y = -height * gridExtentFactor;
-          //       y <= height * gridExtentFactor;
-          //       y += spacing
-          //     ) {
-          //       ctx.moveTo(width * gridExtentFactor, y);
-          //       ctx.lineTo(-width * gridExtentFactor, y);
-          //     }
-          //     ctx.stroke();
-          //   });
-          //   network.on("beforeDrawing", function (ctx) {
-          //     var width = ctx.canvas.clientWidth;
-          //     var height = ctx.canvas.clientHeight;
-          //     var spacing = 6; // Adjust for smaller grid size
-          //     var gridExtentFactor = 4;
-          //     ctx.strokeStyle = "lightgrey";
-          //     ctx.lineWidth = 0.2; // Set line width for dots
-          //     // draw dotted grid
-          //     ctx.beginPath();
-          //     for (
-          //       var x = -width * gridExtentFactor;
-          //       x <= width * gridExtentFactor;
-          //       x += spacing
-          //     ) {
-          //       var dashes = [1, 10]; // [dash length, space length] for dotted line
-          //       ctx.setLineDash(dashes);
-          //       ctx.moveTo(x, height * gridExtentFactor);
-          //       ctx.lineTo(x, -height * gridExtentFactor);
-          //       ctx.setLineDash([]); // Reset line dash for solid lines
-          //     }
-          //     for (
-          //       var y = -height * gridExtentFactor;
-          //       y <= height * gridExtentFactor;
-          //       y += spacing
-          //     ) {
-          //       ctx.setLineDash(dashes);
-          //       ctx.moveTo(width * gridExtentFactor, y);
-          //       ctx.lineTo(-width * gridExtentFactor, y);
-          //       ctx.setLineDash([]);
-          //     }
-          //     ctx.stroke();
-          //   });
-          //   network.on("beforeDrawing", function (ctx) {
-          //     var width = ctx.canvas.clientWidth;
-          //     var height = ctx.canvas.clientHeight;
-          //     var spacing = 10; // Adjust for desired grid size
-          //     var gridExtentFactor = 4;
-          //     var dotSize = 2; // Adjust for dot size
-          //     var dotColor = "lightgrey";
-          //     // function drawSquare(ctx, x, y, size, color) {
-          //     //   ctx.fillStyle = color;
-          //     //   ctx.fillRect(x - size / 2, y - size / 2, size, size);
-          //     // }
-          //     // draw grid of dots
-          //     for (
-          //       var x = -width * gridExtentFactor;
-          //       x <= width * gridExtentFactor;
-          //       x += spacing
-          //     ) {
-          //       for (
-          //         var y = -height * gridExtentFactor;
-          //         y <= height * gridExtentFactor;
-          //         y += spacing
-          //       ) {
-          //         ctx.fillStyle = dotColor;
-          //         ctx.fillRect(
-          //           x - dotSize / 2,
-          //           y - dotSize / 2,
-          //           dotSize,
-          //           dotSize
-          //         );
-          //         // drawSquare(ctx, x, y, dotSize, dotColor);
-          //       }
-          //     }
-          //   });
         }}
         style={{
           border: "1px solid #dee1e2",
@@ -370,6 +289,7 @@ export default function GraphDiagram({ data }) {
           borderRadius: "6px",
         }}
       />
+      {/* <ForceGraph2D graphData={graph} nodeAutoColorBy="type" linkColor="red" /> */}
       {!nodeInfo && !edgeInfo && (
         <div
           style={{
