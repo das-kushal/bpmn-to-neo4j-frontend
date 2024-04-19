@@ -35,7 +35,7 @@ or
 npm install
 ```
 
-#### In the env file write your own credentials for neo4j
+#### Create .env.local file and  write your own credentials for neo4j
 
 ```
 VITE_NEO4J_URL="<your-neo4j-url>"
