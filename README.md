@@ -59,8 +59,22 @@ Note: Make sure that your Neo4j is up and running
 
 #### Here are some images
 
+> Main screen
 ![Screenshot 2024-03-27 at 11 38 40 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/551aa6eb-da5c-42bf-bddc-f4cb85bfc2be)
 
-![Screenshot 2024-03-27 at 10 50 42 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/a6027164-4665-4760-81fa-2e543058174f)
+> Function of the buttons
+![image](https://github.com/das-kushal/bpmn-to-neo4j-frontend/assets/86544278/e97094fe-74e0-48c5-aea8-476a495e4371)
 
-![Screenshot 2024-03-27 at 10 21 50 PM](https://github.com/das-kushal/bpmn-neo4j-frontend-final/assets/86544278/ceb720bd-4033-444c-9c4e-a222dccd4eac)
+> Full graph shown
+> ![image](https://github.com/das-kushal/bpmn-to-neo4j-frontend/assets/86544278/f838a4d7-b958-4f7d-8ef4-f664656de944)
+
+
+> Query tab with correct query
+![](https://github.com/das-kushal/bpmn-to-neo4j-frontend/assets/86544278/5b86ccf5-7a11-4d2f-a8a0-5e44addca198)
+
+
+> Query tab with wrong query
+![](https://github.com/das-kushal/bpmn-to-neo4j-frontend/assets/86544278/aefca73e-2ec3-40a6-894d-be4206634b98)
+
+
+
