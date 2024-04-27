@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import neo4j from "neo4j-driver";
 import { FaPlay } from "react-icons/fa";
 
@@ -9,11 +9,19 @@ import Editor from "@monaco-editor/react";
 import GraphDiagram from "./GraphDiagram";
 import { CgSpinner } from "react-icons/cg";
 
+import toast, { Toaster } from "react-hot-toast";
+
 export default function QueryDiagram({ neo4jData }) {
   const [query, setQuery] = useState("");
   const [session, setSession] = useState(null);
   const [adjMatrix, setAdjMatrix] = useState({});
   const [graphData, setGraphData] = useState(neo4jData);
+
+  // const errorRef = useRef(null);
+
+  const notify = (err) => toast.error("SYNTAX ERROR: " + err);
+
+  // const errorRef = useRef(null);
   /* {
     "type": "RELATIONSHIP",
     "source": {
@@ -96,8 +104,12 @@ export default function QueryDiagram({ neo4jData }) {
     try {
       const result = await session.run(query);
       await processQuery(result.records);
+      toast.success("Query executed successfully");
       console.log(result.records);
     } catch (err) {
+      notify(err.message);
+
+      // alert(err);
       console.error(err);
     }
   };
@@ -198,6 +210,12 @@ export default function QueryDiagram({ neo4jData }) {
 
           options={monacoOptions}
         />
+
+        {/* <button ref={errorRef} onClick={notify} style={{ display: "none" }}>
+          Notify!
+        </button> */}
+        <Toaster />
+
         <span
           style={{
             display: "flex",
