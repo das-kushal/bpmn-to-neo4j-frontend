@@ -1,6 +1,6 @@
 # BPMN-To-Neo4j Frontend
 
-This is a frontend which can be used to create a BPMN diagram and then export it to Neo4j database and visualise the graph in the browser itself
+This is the frontend which can be used to create a BPMN diagram and then export it to Neo4j database and visualise the graph in the browser itself!
 
 ## What are the features included:
 
